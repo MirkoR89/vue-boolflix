@@ -4,6 +4,7 @@ new Vue ({
     movieList: []
   },
   mounted(){
-    
+    axios
+    .get('')
   }
 })
