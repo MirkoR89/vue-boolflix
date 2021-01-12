@@ -18,7 +18,6 @@ new Vue({
               let starsVote = Number(Math.floor(item.vote_average / 2));
               return item.vote = starsVote
           });
-
         }
       )
     }
