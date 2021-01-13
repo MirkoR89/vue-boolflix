@@ -28,18 +28,38 @@
         <hr>
     </header>
 
-    <!-- Movies container -->
+    <!-- Films container -->
     <main>
-      <div v-for='movie in moviesList' class="movies_container">
-        <h3>{{movie.title}}{{movie.name}}</h3>
-        <ul>
-          <li>{{movie.original_title}}</li>
-          <li>{{movie.original_language}}</li>
-        </ul>
-        <span v-for='item in movie.vote'><i class="fas fa-star"></i></span>
-        <span v-for='item in  (5 - movie.vote)'> <i class="far fa-star"></i></span>
+
+      <!-- Movies section -->
+      <section class="movies">
+        <h2>MOVIES</h2>
+        <div v-for='movie in moviesList' class="movies_container">
+          <h3>{{movie.title}}</h3>
+          <ul>
+            <li>{{movie.original_title}}</li>
+            <li>{{movie.original_language}}</li>
+          </ul>
+          <span v-for='item in movie.vote'><i class="fas fa-star"></i></span>
+          <span v-for='item in  (5 - movie.vote)'> <i class="far fa-star"></i></span>
+        </div>
         <hr>
-      </div>
+      </section>
+
+      <!-- Tv Shows section -->
+      <h2>SERIES</h2>
+      <section class="tv_shows">
+        <div v-for='tvShow in tvShowsList' class="tv_shows_container">
+          <h3>{{tvShow.name}}</h3>
+          <ul>
+            <li>{{tvShow.original_name}}</li>
+            <li>{{tvShow.original_language}}</li>
+          </ul>
+          <span v-for='item in tvShow.vote'><i class="fas fa-star"></i></span>
+          <span v-for='item in  (5 - tvShow.vote)'> <i class="far fa-star"></i></span>
+
+        </div>
+      </section>
     </main>
   </div>
   <!-- Axios CDN -->
