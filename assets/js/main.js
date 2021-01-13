@@ -19,26 +19,24 @@ new Vue({
           this.moviesList = response.data.results
 
           //Loop to move vote to stars
-          this.moviesList.forEach(item => {
-            let starsVote = Number(Math.floor(item.vote_average / 2));
-            return item.vote = starsVote
+          this.moviesList.forEach(movie => {
+            let starsVote = Number(Math.floor(movie.vote_average / 2));
+            return movie.vote = starsVote    
           });
-        }
-      ),
-      // Request API TvShows
-      axios
+        }),
+        // Request API TvShows
+        axios
         .get(`${this.apiTvShows}?api_key=${this.personalApiKey}&query= ${this.search}`)
 
         .then(response => {
           this.tvShowsList = response.data.results
 
           //Loop to move vote to stars
-          this.tvShowsList.forEach(item => {
-            let starsVote = Number(Math.floor(item.vote_average / 2));
-            return item.vote = starsVote
+          this.tvShowsList.forEach(tvShow => {
+            let starsVote = Number(Math.floor(tvShow.vote_average / 2));
+            return tvShow.vote = starsVote
           });
-        }
-      )
+        })
     }
   }
 })

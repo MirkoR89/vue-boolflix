@@ -17,7 +17,7 @@
     <!-- Logo, searchbar and button -->
     <header>
         <div class="container d-flex justify-content-between align-items-center">
-            <img src="" alt="logo">
+            <img src="assets/img/boolflix.png" alt="logo">
             <div class="input_container">
               <form @submit.prevent='sendRequest'>
                 <input v-model='search' type="search" name="" value="">
@@ -38,7 +38,7 @@
           <h3>{{movie.title}}</h3>
           <ul>
             <li>{{movie.original_title}}</li>
-            <li>{{movie.original_language}}</li>
+            <li><img :src="'assets/img/' + movie.original_language + '.png'" alt="flags icons"></li>
           </ul>
           <span v-for='item in movie.vote'><i class="fas fa-star"></i></span>
           <span v-for='item in  (5 - movie.vote)'> <i class="far fa-star"></i></span>
