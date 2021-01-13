@@ -2,6 +2,8 @@ new Vue({
   el: '#root',
   data: {
     personalApiKey: '9ef5a9e86131aa08d5c204c4cea437a0',
+    apiMovies: 'https://api.themoviedb.org/3/search/movie',
+    apiTvShow: 'https://api.themoviedb.org/3/search/tv',
     search: null,
     moviesList: null,
   },
@@ -9,14 +11,16 @@ new Vue({
     // Function to call back API Data
     sendRequest() {
       axios
-        .get(`https://api.themoviedb.org/3/search/movie?api_key=${this.personalApiKey}&query= ${this.search}`)
+        .get(`${this.apiMovies}?api_key=${this.personalApiKey}&query= ${this.search}`)
+      axios
+        .get(`${this.apiTvShow}?api_key=${this.personalApiKey}&query= ${this.search}`)
         .then(response => {
           this.moviesList = response.data.results
 
           //Loop to move vote to stars
           this.moviesList.forEach(item => {
-              let starsVote = Number(Math.floor(item.vote_average / 2));
-              return item.vote = starsVote
+            let starsVote = Number(Math.floor(item.vote_average / 2));
+            return item.vote = starsVote
           });
         }
       )
