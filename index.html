@@ -34,11 +34,11 @@
       <!-- Movies section -->
       <section class="movies">
         <h2>MOVIES</h2>
-        <div v-for='movie in moviesList' class="movies_container">
+        <div v-for='movie in moviesList' class="movies_container"> <!-- Loop to cycle API movies to have title, img, flag, vote -->
           <h3>{{movie.title}}</h3>
           <ul>
             <li>{{movie.original_title}}</li>
-            <li><img :src="'assets/img/' + movie.original_language + '.png'" alt="flags icons"></li>
+            <li><img :src=`https://www.countryflags.io/${movie.original_language}/flat/32.png`></li>
           </ul>
           <span v-for='item in movie.vote'><i class="fas fa-star"></i></span>
           <span v-for='item in  (5 - movie.vote)'> <i class="far fa-star"></i></span>
@@ -49,11 +49,11 @@
       <!-- Tv Shows section -->
       <h2>SERIES</h2>
       <section class="tv_shows">
-        <div v-for='tvShow in tvShowsList' class="tv_shows_container">
+        <div v-for='tvShow in tvShowsList' class="tv_shows_container"> <!-- Loop to cycle API tv show to have title, img, flag, vote -->
           <h3>{{tvShow.name}}</h3>
           <ul>
             <li>{{tvShow.original_name}}</li>
-            <li>{{tvShow.original_language}}</li>
+            <li><img :src=`https://www.countryflags.io/${tvShow.original_language}/flat/32.png`></li>
           </ul>
           <span v-for='item in tvShow.vote'><i class="fas fa-star"></i></span>
           <span v-for='item in  (5 - tvShow.vote)'> <i class="far fa-star"></i></span>
