@@ -37,13 +37,13 @@
       <section class="movies">
         <h2>MOVIES</h2>
         <div class="movies_container d-flex flex-wrap justify-content-around">
-          <div v-for='movie in moviesList' class="card m-3 shadow" style="width: 22rem;">
+          <div v-for='movie in moviesList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
             <!-- Loop to cycle API movies to have title, img, flag, vote -->
             <!-- Cover movies -->
             <img :src=`https://image.tmdb.org/t/p/w300${movie.poster_path}` class="card-img-top" alt="covers of movies">
             <div class="card-body">
               <h5 class="card-title">{{movie.title}}</h5>
-              <p class="card-text overflow-auto">{{movie.overview}}</p>
+              <p class="card-text overflow-auto pr-2">{{movie.overview}}</p>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item text-center">Original title: {{movie.original_title}}</li>
