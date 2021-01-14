@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +13,18 @@
   <!-- Fontawesome CDN -->
   <script src="https://kit.fontawesome.com/8d58ee31c8.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div id='root'>
     <!-- Logo, searchbar and button -->
     <header>
-        <div class="container d-flex justify-content-between align-items-center">
-            <img src="assets/img/boolflix.png" alt="logo">
-            <div class="input_container">
-              <form @submit.prevent='sendRequest'>
-                <input v-model='search' type="search" name="" value="">
-                <button type="submit" name="button">Show movies</button>
-              </form>
-            </div>
-        </div>
-        <hr>
+      <nav class="navbar bg-dark">
+        <a class="navbar-brand"><img src="assets/img/boolflix.png" alt="logo"></a>
+        <form class="form-inline" @submit.prevent='sendRequest'>
+          <input v-model='search' @keyup.enter='sendRequest' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button type="submit" class="btn btn-outline-light">Search</button>
+        </form>
+      </nav>
     </header>
 
     <!-- Films container -->
@@ -34,13 +33,17 @@
       <!-- Movies section -->
       <section class="movies">
         <h2>MOVIES</h2>
-        <div v-for='movie in moviesList' class="movies_container"> <!-- Loop to cycle API movies to have title, img, flag, vote -->
+        <div v-for='movie in moviesList' class="movies_container">
+          <!-- Loop to cycle API movies to have title, img, flag, vote -->
+          <!-- Cover movies -->
           <img :src=`https://image.tmdb.org/t/p/w185${movie.poster_path}` alt="covers of movies">
           <h3>{{movie.title}}</h3>
           <ul>
             <li>{{movie.original_title}}</li>
+            <!-- Flags languages -->
             <li><img :src=`https://www.countryflags.io/${movie.original_language}/flat/32.png` alt="flags of languages"></li>
           </ul>
+          <!-- Star to vote -->
           <span v-for='item in movie.vote'><i class="fas fa-star"></i></span>
           <span v-for='item in  (5 - movie.vote)'> <i class="far fa-star"></i></span>
         </div>
@@ -50,13 +53,17 @@
       <!-- Tv Shows section -->
       <h2>SERIES</h2>
       <section class="tv_shows">
-        <div v-for='tvShow in tvShowsList' class="tv_shows_container"> <!-- Loop to cycle API tv show to have title, img, flag, vote -->
+        <div v-for='tvShow in tvShowsList' class="tv_shows_container">
+          <!-- Loop to cycle API tv show to have title, img, flag, vote -->
+          <!-- Cover TvShows -->
           <img :src=`https://image.tmdb.org/t/p/w185${tvShow.poster_path}` alt="covers of movies">
           <h3>{{tvShow.name}}</h3>
           <ul>
             <li>{{tvShow.original_name}}</li>
+            <!-- Flags languages -->
             <li><img :src=`https://www.countryflags.io/${tvShow.original_language}/flat/32.png` alt="flags of languages"></li>
           </ul>
+          <!-- Star to vote -->
           <span v-for='item in tvShow.vote'><i class="fas fa-star"></i></span>
           <span v-for='item in  (5 - tvShow.vote)'> <i class="far fa-star"></i></span>
 
@@ -71,4 +78,5 @@
   <!-- Link file JS -->
   <script src="assets/js/main.js" charset="utf-8"></script>
 </body>
+
 </html>
