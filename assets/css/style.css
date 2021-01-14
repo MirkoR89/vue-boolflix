@@ -1,20 +1,24 @@
 /* Unitily classes */
-
-/* Header */
-
-/* Main */
-main {
-  background: #212121;
+body {
+  font-family: 'Roboto Slab', serif;
+  background: #3B4252!important;
+  min-width: 700px;
 }
 
-.movies,
-.tvShow {
-  margin-right: auto;
+/* Header */
+.navbar {
+  background-color: #2E3440;
+}
+
+/* Main */
+.list-group-item,
+.card {
+  background-color: #434C5E!important;
+  color: #ECEFF4;
 }
 
 .card-body p {
-  max-height: 120px;
+  font-weight: 300;
+  font-size: 1rem;
+  max-height: 100px;
 }
-/* Movies section */
-
-/* TvShow section */
