@@ -1,11 +1,20 @@
 /* Unitily classes */
 
 /* Header */
-header nav {
-  background-color: #212121:
-}
-/* Main */
 
+/* Main */
+main {
+  background: #212121;
+}
+
+.movies,
+.tvShow {
+  margin-right: auto;
+}
+
+.card-body p {
+  max-height: 120px;
+}
 /* Movies section */
 
 /* TvShow section */

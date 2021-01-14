@@ -29,25 +29,29 @@
 
     <!-- Films container -->
     <main>
-
       <!-- Movies section -->
       <section class="movies">
         <h2>MOVIES</h2>
-        <div v-for='movie in moviesList' class="movies_container">
-          <!-- Loop to cycle API movies to have title, img, flag, vote -->
-          <!-- Cover movies -->
-          <img :src=`https://image.tmdb.org/t/p/w185${movie.poster_path}` alt="covers of movies">
-          <h3>{{movie.title}}</h3>
-          <ul>
-            <li>{{movie.original_title}}</li>
-            <!-- Flags languages -->
-            <li><img :src=`https://www.countryflags.io/${movie.original_language}/flat/32.png` alt="flags of languages"></li>
-          </ul>
-          <!-- Star to vote -->
-          <span v-for='item in movie.vote'><i class="fas fa-star"></i></span>
-          <span v-for='item in  (5 - movie.vote)'> <i class="far fa-star"></i></span>
+        <div class="movies_container d-flex flex-wrap justify-content-around">
+          <div v-for='movie in moviesList' class="card " style="width: 14rem;"> <!-- Loop to cycle API movies to have title, img, flag, vote -->
+            <!-- Cover movies -->
+            <img :src=`https://image.tmdb.org/t/p/w300${movie.poster_path}` class="card-img-top" alt="covers of movies">
+            <div class="card-body">
+              <h5 class="card-title">{{movie.title}}</h5>
+              <p class="card-text overflow-auto">{{movie.overview}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{movie.original_title}}</li>
+              <!-- Flags languages -->
+              <li class="list-group-item"><img :src=`https://www.countryflags.io/${movie.original_language}/flat/32.png` alt="flags of languages"></li>
+              <!-- Star to vote -->
+              <li class="list-group-item">
+                <span v-for='item in movie.vote'><i class="fas fa-star"></i></span>
+                <span v-for='item in  (5 - movie.vote)'> <i class="far fa-star"></i></span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <hr>
       </section>
 
       <!-- Tv Shows section -->
