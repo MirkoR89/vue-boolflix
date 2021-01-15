@@ -39,7 +39,12 @@
           <div v-for='movie in moviesList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
             <!-- Loop to cycle API movies to have title, img, flag, vote -->
             <!-- Cover movies -->
-            <img :src=`https://image.tmdb.org/t/p/w342${movie.poster_path}` class="card-img-top" alt="covers of movies">
+            <img :src=`https://image.tmdb.org/t/p/w342${movie.poster_path}` v-if='movie.poster_path' class="card-img-top" alt="covers of movies">
+            <!-- No Cover Tv Show -->
+            <div class="no_cover_movie d-flex justify-content-center align-items-center" v-else>
+              <img src="assets/img/no_cover.png" alt="Cover yellow when no cover">
+              <h3 class="text-center">{{movie.title}}</h3>
+            </div>
             <div class="card-body">
               <h5 class="card-title">{{movie.title}}</h5>
               <p class="card-text overflow-auto pr-2">{{movie.overview}}</p>
@@ -67,8 +72,13 @@
         <div class="tv_shows_container d-flex flex-wrap justify-content-around">
           <div v-for='tvShow in tvShowsList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
             <!-- Loop to cycle API movies to have title, img, flag, vote -->
-            <!-- Cover movies -->
-            <img :src=`https://image.tmdb.org/t/p/w342${tvShow.poster_path}` class="card-img-top" alt="covers of tv shows">
+            <!-- Cover Tv Show -->
+            <img :src=`https://image.tmdb.org/t/p/w342${tvShow.poster_path}` v-if='tvShow.poster_path' class="card-img-top" alt="covers of tv shows">
+            <!-- No Cover Tv Show -->
+            <div class="no_cover_tv d-flex justify-content-center align-items-center" v-else>
+              <img src="assets/img/no_cover.png" alt="Cover yellow when no cover">
+              <h3 class="text-center">{{tvShow.name}}</h3>
+            </div>
             <div class="card-body">
               <h5 class="card-title">{{tvShow.name}}</h5>
               <p class="card-text overflow-auto pr-2">{{tvShow.overview}}</p>

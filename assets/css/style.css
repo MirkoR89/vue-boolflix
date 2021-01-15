@@ -23,6 +23,13 @@ body {
   color: #ECEFF4;
 }
 
+.no_cover_movie h3,
+.no_cover_tv > h3 {
+  position: absolute;
+  z-index: 1;
+  color: #3B4252;
+}
+
 .card-body p {
   font-weight: 300;
   font-size: 0.9rem;
@@ -31,18 +38,21 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
- width: 6px;
- height: 8px;
+  width: 6px;
+  height: 8px;
 }
+
 ::-webkit-scrollbar-thumb {
- background: linear-gradient(15deg, #eceff4 30%,#d8dee9 60%);
- border-radius: 10px;
+  background: linear-gradient(15deg, #eceff4 30%, #d8dee9 60%);
+  border-radius: 10px;
 }
-::-webkit-scrollbar-thumb:hover{
- background: linear-gradient(15deg, #eceff4 30%,#d8dee9 60%);
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(15deg, #eceff4 30%, #d8dee9 60%);
 }
-::-webkit-scrollbar-track{
- background: #2e3440;
- border-radius: 10px;
- box-shadow: inset -3px 3px 6px #d8dee9;
+
+::-webkit-scrollbar-track {
+  background: #2e3440;
+  border-radius: 10px;
+  box-shadow: inset -3px 3px 6px #d8dee9;
 }
