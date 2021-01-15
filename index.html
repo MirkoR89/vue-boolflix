@@ -30,17 +30,16 @@
         </form>
       </nav>
     </header>
-
     <!-- Films container -->
     <main>
       <!-- Movies section -->
       <section class="movies">
-        <h2>MOVIES</h2>
+        <h2 class="my-2 mx-4">Movies</h2>
         <div class="movies_container d-flex flex-wrap justify-content-around">
           <div v-for='movie in moviesList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
             <!-- Loop to cycle API movies to have title, img, flag, vote -->
             <!-- Cover movies -->
-            <img :src=`https://image.tmdb.org/t/p/w300${movie.poster_path}` class="card-img-top" alt="covers of movies">
+            <img :src=`https://image.tmdb.org/t/p/w342${movie.poster_path}` class="card-img-top" alt="covers of movies">
             <div class="card-body">
               <h5 class="card-title">{{movie.title}}</h5>
               <p class="card-text overflow-auto pr-2">{{movie.overview}}</p>
@@ -63,22 +62,31 @@
       </section>
 
       <!-- Tv Shows section -->
-      <h2>SERIES</h2>
       <section class="tv_shows">
-        <div v-for='tvShow in tvShowsList' class="tv_shows_container">
-          <!-- Loop to cycle API tv show to have title, img, flag, vote -->
-          <!-- Cover TvShows -->
-          <img :src=`https://image.tmdb.org/t/p/w185${tvShow.poster_path}` alt="covers of movies">
-          <h3>{{tvShow.name}}</h3>
-          <ul>
-            <li>{{tvShow.original_name}}</li>
-            <!-- Flags languages -->
-            <li><img :src=`https://www.countryflags.io/${tvShow.original_language}/flat/32.png` alt="flags of languages"></li>
-          </ul>
-          <!-- Star to vote -->
-          <span v-for='item in tvShow.vote'><i class="fas fa-star"></i></span>
-          <span v-for='item in  (5 - tvShow.vote)'> <i class="far fa-star"></i></span>
-
+        <h2 class="my-2 mx-4">Tv Shows</h2>
+        <div class="tv_shows_container d-flex flex-wrap justify-content-around">
+          <div v-for='tvShow in tvShowsList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
+            <!-- Loop to cycle API movies to have title, img, flag, vote -->
+            <!-- Cover movies -->
+            <img :src=`https://image.tmdb.org/t/p/w342${tvShow.poster_path}` class="card-img-top" alt="covers of tv shows">
+            <div class="card-body">
+              <h5 class="card-title">{{tvShow.name}}</h5>
+              <p class="card-text overflow-auto pr-2">{{tvShow.overview}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center">Original title: {{tvShow.original_name}}</li>
+              <li class="list-group-item d-flex justify-content-around">
+                <!-- Flags languages -->
+                <img :src=`https://www.countryflags.io/${tvShow.original_language}/flat/32.png` alt="flags of languages">
+                <!-- Star to vote -->
+                <div class="stars_icons">
+                  <span>Vote:</span>
+                  <span v-for='item in tvShow.vote'><i class="fas fa-star text-warning"></i></span>
+                  <span v-for='item in  (5 - tvShow.vote)'><i class="far fa-star text-warning"></i></span>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
