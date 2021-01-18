@@ -17,6 +17,7 @@ new Vue({
 
         .then(response => {
           this.moviesList = response.data.results
+          this.search = null
 
           //Loop to move..
           this.moviesList.forEach(movie => {
