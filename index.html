@@ -30,11 +30,12 @@
         </form>
       </nav>
     </header>
+
     <!-- Films container -->
     <main>
       <!-- Movies section -->
       <section class="movies">
-        <h2 class="my-2 mx-4">Movies</h2>
+        <h2 v-if="moviesList && moviesList != 0" class="my-5 mx-4">Movies</h2>
         <div class="movies_container d-flex flex-wrap justify-content-around">
           <div v-for='movie in moviesList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
             <!-- Loop to cycle API movies to have title, img, flag, vote -->
@@ -50,15 +51,15 @@
               <p class="card-text overflow-auto pr-2">{{movie.overview}}</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item text-center">Original title: {{movie.original_title}}</li>
+              <li v-if="movie.original_title != movie.title" class="list-group-item text-center">Original title: {{movie.original_title}}</li>
               <li class="list-group-item d-flex justify-content-around">
-                <!-- Flags languages -->
-                <img :src=`https://www.countryflags.io/${movie.original_language}/flat/32.png` alt="flags of languages">
                 <!-- Star to vote -->
                 <div class="stars_icons">
                   <span>Vote:</span>
                   <span v-for='item in movie.vote'><i class="fas fa-star text-warning"></i></span>
                   <span v-for='item in  (5 - movie.vote)'><i class="far fa-star text-warning"></i></span>
+                  <!-- Flags languages -->
+                  <img :src=`https://www.countryflags.io/${movie.original_language}/flat/32.png` alt="flags of languages">
                 </div>
               </li>
             </ul>
@@ -68,7 +69,7 @@
 
       <!-- Tv Shows section -->
       <section class="tv_shows">
-        <h2 class="my-2 mx-4">Tv Shows</h2>
+        <h2 v-if="tvShowsList && tvShowsList != 0" class="my-2 mx-4">Tv Shows</h2>
         <div class="tv_shows_container d-flex flex-wrap justify-content-around">
           <div v-for='tvShow in tvShowsList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
             <!-- Loop to cycle API movies to have title, img, flag, vote -->
@@ -84,7 +85,7 @@
               <p class="card-text overflow-auto pr-2">{{tvShow.overview}}</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item text-center">Original title: {{tvShow.original_name}}</li>
+              <li v-if="tvShow.original_name != tvShow.name" class="list-group-item text-center">Original title: {{tvShow.original_name}}</li>
               <li class="list-group-item d-flex justify-content-around">
                 <!-- Flags languages -->
                 <img :src=`https://www.countryflags.io/${tvShow.original_language}/flat/32.png` alt="flags of languages">

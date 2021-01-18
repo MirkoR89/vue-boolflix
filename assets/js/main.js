@@ -4,7 +4,7 @@ new Vue({
     personalApiKey: '9ef5a9e86131aa08d5c204c4cea437a0',
     apiMovies: 'https://api.themoviedb.org/3/search/movie',
     apiTvShows: 'https://api.themoviedb.org/3/search/tv',
-    moviesList: null,
+    moviesList: false,
     tvShowsList: null,
     search: null
   },
