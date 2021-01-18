@@ -36,8 +36,21 @@
       <!-- Movies section -->
       <section class="movies">
         <h2 v-if="moviesList && moviesList != 0" class="my-5 mx-4">Movies</h2>
-        <div class="movies_container d-flex flex-wrap justify-content-around">
-          <div v-for='movie in moviesList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
+        <!-- Searching no found -->
+        <div v-if="moviesList == 0 && tvShowsList == 0" class="mt-5 container_search_no_found d-flex justify-content-around align-items-center text-white">
+          <div class="search_no_found">
+            <p>Nessun risultato per la tua ricerca di "{{search}}"</p>
+            <p>Suggerimenti:</p>
+            <ul>
+              <li>Prova con parole chiave diverse</li>
+              <li>Cerchi un film o un programma Tv?</li>
+              <li>Prova a usare il titolo di un film o programma TV</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="movies_container d-flex flex-wrap justify-content-start">
+          <div v-for='movie in moviesList' class="card mx-2 mb-5 shadow" style="width: 18rem;">
             <!-- Loop to cycle API movies to have title, img, flag, vote -->
             <!-- Cover movies -->
             <img :src=`https://image.tmdb.org/t/p/w342${movie.poster_path}` v-if='movie.poster_path' class="card-img-top" alt="covers of movies">
@@ -69,9 +82,9 @@
 
       <!-- Tv Shows section -->
       <section class="tv_shows">
-        <h2 v-if="tvShowsList && tvShowsList != 0" class="my-2 mx-4">Tv Shows</h2>
-        <div class="tv_shows_container d-flex flex-wrap justify-content-around">
-          <div v-for='tvShow in tvShowsList' class="card mx-1 mb-5 shadow" style="width: 18rem;">
+        <h2 v-if="tvShowsList && tvShowsList != 0" class="my-5 mx-4">Tv Shows</h2>
+        <div class="tv_shows_container d-flex flex-wrap justify-content-start">
+          <div v-for='tvShow in tvShowsList' class="card mx-2 mb-5 shadow" style="width: 18rem;">
             <!-- Loop to cycle API movies to have title, img, flag, vote -->
             <!-- Cover Tv Show -->
             <img :src=`https://image.tmdb.org/t/p/w342${tvShow.poster_path}` v-if='tvShow.poster_path' class="card-img-top" alt="covers of tv shows">
